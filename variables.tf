@@ -23,12 +23,17 @@ variable "sql_db_name" {
 # Validation ensures only valid UPN formats are accepted.
 
 variable "sql_azuread_login" {
-  description = "Azure AD Admin UPN (e.g. user@domain.com) — entered via ServiceNow"
+  description = "Azure AD user (internal or guest user)"
   type        = string
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$", var.sql_azuread_login))
-    error_message = "ERROR: '${var.sql_azuread_login}' is not a valid UPN format. Expected format: user@domain.com"
+    condition = (
+      can(regex("^[a-zA-Z0-9._%+\\-]+@[a-zA-Z0-9.\\-]+\\.[a-zA-Z]{2,}$", var.sql_azuread_login))
+      ||
+      can(regex("^[a-zA-Z0-9._%+\\-]+#EXT#@[a-zA-Z0-9.\\-]+\\.onmicrosoft\\.com$", var.sql_azuread_login))
+    )
+
+    error_message = "ERROR: '${var.sql_azuread_login}' must be either a valid internal user (user@domain.com) or a valid guest user (#EXT# format)."
   }
 }
 
