@@ -1,5 +1,5 @@
 resource_group_name = "ramu-rg"
-location            = "northeurope"
+location            = "centralindia"
 
 sql_server_name = "ramu-sqlserver-demo"
 sql_db_name     = "ramu-sqldb-demo"
