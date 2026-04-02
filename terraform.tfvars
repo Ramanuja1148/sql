@@ -8,7 +8,7 @@ sql_azuread_login = "Madhu.d_translab.io#EXT#@wtest658gmail.onmicrosoft.com"
 
 # ── Pass via CI/CD secrets, NOT hardcoded ────
 sql_local_admin_username = "azureadmin"
-sql_local_admin_password = "qazwsx@12345"
+sql_local_admin_password = "qazwsx@12345678"
 
 sku_tier     = "GeneralPurpose"
 compute_tier = "serverless"
