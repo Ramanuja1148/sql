@@ -53,6 +53,7 @@ resource "azurerm_mssql_server" "sqlserver" {
   depends_on = [null_resource.validate_admin_account]
 }
 
+
 resource "azurerm_mssql_database" "sqldb" {
   name        = var.sql_db_name
   server_id   = azurerm_mssql_server.sqlserver.id
